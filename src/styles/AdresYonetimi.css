@@ -186,9 +186,16 @@
 }
 
 .adres-column-search {
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-bottom: 1px solid var(--glass-border, rgba(0, 0, 0, 0.08));
   background: var(--bg-primary, #ffffff);
+}
+
+.adres-column-search .dropdown-secici-wrapper .form-input {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 13px;
+  border-radius: 8px;
 }
 
 .adres-column-list {

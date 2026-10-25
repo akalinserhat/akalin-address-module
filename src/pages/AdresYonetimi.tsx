@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
-import { BaseSystemPage } from '@akalin/ui';
+import { BaseSystemPage, AramaInput } from '@akalin/ui';
 import { useAddressService } from '../adapters/AddressServiceContext';
 import { AdresKayitBilgiPopup } from '../components/AdresKayitBilgiPopup';
 import { AdresItem, AdresIstatistik, ProviderHealthStatus } from '../types';
@@ -869,16 +869,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
               </div>
 
               <div className="adres-column-search">
-                <div className="search-input-wrapper">
-                  <Search size={14} className="search-icon" />
-                  <input
-                    type="text"
-                    placeholder={t('il_ara', 'İl veya Plaka Ara...')}
-                    value={ilSearch}
-                    onChange={(e) => setIlSearch(e.target.value)}
-                    className="form-control text-13 py-6"
-                  />
-                </div>
+                <AramaInput
+                  id="adres-il-ara"
+                  placeholder={t('il_ara', 'İl veya Plaka Ara...')}
+                  value={ilSearch}
+                  onChange={(e) => setIlSearch(e.target.value)}
+                />
               </div>
 
               <div className="adres-column-list">
@@ -948,16 +944,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedIl && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('ilce_ara', 'İlçe Ara...')}
-                      value={ilceSearch}
-                      onChange={(e) => setIlceSearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-ilce-ara"
+                    placeholder={t('ilce_ara', 'İlçe Ara...')}
+                    value={ilceSearch}
+                    onChange={(e) => setIlceSearch(e.target.value)}
+                  />
                 </div>
               )}
 
@@ -1031,16 +1023,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedIlce && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('koy_ara', 'Köy / Belde Ara...')}
-                      value={koySearch}
-                      onChange={(e) => setKoySearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-koy-ara"
+                    placeholder={t('koy_ara', 'Köy / Belde Ara...')}
+                    value={koySearch}
+                    onChange={(e) => setKoySearch(e.target.value)}
+                  />
                 </div>
               )}
 
@@ -1114,16 +1102,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedKoy && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('mahalle_ara', 'Mahalle Ara...')}
-                      value={mahalleSearch}
-                      onChange={(e) => setMahalleSearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-mahalle-ara"
+                    placeholder={t('mahalle_ara', 'Mahalle Ara...')}
+                    value={mahalleSearch}
+                    onChange={(e) => setMahalleSearch(e.target.value)}
+                  />
                 </div>
               )}
 
@@ -1197,16 +1181,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedMahalle && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('cadde_ara', 'Cadde veya Sokak Ara...')}
-                      value={caddeSearch}
-                      onChange={(e) => setCaddeSearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-cadde-ara"
+                    placeholder={t('cadde_ara', 'Cadde veya Sokak Ara...')}
+                    value={caddeSearch}
+                    onChange={(e) => setCaddeSearch(e.target.value)}
+                  />
                 </div>
               )}
 
@@ -1280,16 +1260,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedCadde && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('diskapi_ara', 'Bina / Kapı No Ara...')}
-                      value={disKapiSearch}
-                      onChange={(e) => setDisKapiSearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-diskapi-ara"
+                    placeholder={t('diskapi_ara', 'Bina / Kapı No Ara...')}
+                    value={disKapiSearch}
+                    onChange={(e) => setDisKapiSearch(e.target.value)}
+                  />
                 </div>
               )}
 
@@ -1363,16 +1339,12 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
 
               {selectedDisKapi && (
                 <div className="adres-column-search">
-                  <div className="search-input-wrapper">
-                    <Search size={14} className="search-icon" />
-                    <input
-                      type="text"
-                      placeholder={t('ickapi_ara', 'Daire No Ara...')}
-                      value={icKapiSearch}
-                      onChange={(e) => setIcKapiSearch(e.target.value)}
-                      className="form-control text-13 py-6"
-                    />
-                  </div>
+                  <AramaInput
+                    id="adres-ickapi-ara"
+                    placeholder={t('ickapi_ara', 'Daire No Ara...')}
+                    value={icKapiSearch}
+                    onChange={(e) => setIcKapiSearch(e.target.value)}
+                  />
                 </div>
               )}
 
