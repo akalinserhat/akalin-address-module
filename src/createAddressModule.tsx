@@ -201,4 +201,5 @@ export function createAddressModule(
   };
 }
 
+export const AdresYonetimiModule = createAddressModule();
 export default createAddressModule;

@@ -7,4 +7,4 @@ export * from './defaults/defaultAddresses';
 export * from './adapters/AddressServiceContext';
 export * from './components/AdresKayitBilgiPopup';
 export * from './pages/AdresYonetimi';
-export { createAddressModule, default } from './createAddressModule';
+export { createAddressModule, AdresYonetimiModule, default } from './createAddressModule';
