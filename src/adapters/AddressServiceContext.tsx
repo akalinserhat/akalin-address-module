@@ -104,17 +104,36 @@ export function createRestAddressAdapter(options?: {
     if (typeof window !== 'undefined' && (window as any).axios) {
       return (window as any).axios as IGenericHttpClient;
     }
+
+    const getAuthHeaders = (extraHeaders?: Record<string, string>): Record<string, string> => {
+      const headers: Record<string, string> = { ...extraHeaders };
+      if (typeof window !== 'undefined') {
+        const token =
+          localStorage.getItem('admin_token') ||
+          localStorage.getItem('token') ||
+          sessionStorage.getItem('admin_token') ||
+          sessionStorage.getItem('token');
+        if (token && !headers['Authorization']) {
+          headers['Authorization'] = `Bearer ${token}`;
+        }
+      }
+      return headers;
+    };
+
     // Basit fetch wrapper fallback
     return {
       async get<T>(url: string): Promise<{ data: T }> {
-        const res = await fetch(url, { credentials: 'include' });
+        const res = await fetch(url, {
+          credentials: 'include',
+          headers: getAuthHeaders()
+        });
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
         return { data: await res.json() };
       },
       async post<T>(url: string, body?: any): Promise<{ data: T }> {
         const res = await fetch(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
           body: body ? JSON.stringify(body) : undefined,
           credentials: 'include'
         });
@@ -124,7 +143,7 @@ export function createRestAddressAdapter(options?: {
       async put<T>(url: string, body?: any): Promise<{ data: T }> {
         const res = await fetch(url, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
+          headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
           body: body ? JSON.stringify(body) : undefined,
           credentials: 'include'
         });
@@ -132,7 +151,11 @@ export function createRestAddressAdapter(options?: {
         return { data: await res.json() };
       },
       async delete<T>(url: string): Promise<{ data: T }> {
-        const res = await fetch(url, { method: 'DELETE', credentials: 'include' });
+        const res = await fetch(url, {
+          method: 'DELETE',
+          headers: getAuthHeaders(),
+          credentials: 'include'
+        });
         if (!res.ok) throw new Error(`HTTP Error: ${res.status}`);
         return { data: await res.json() };
       }

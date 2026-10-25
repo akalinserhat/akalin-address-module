@@ -244,7 +244,8 @@ export const AdresYonetimiPage: React.FC<AdresYonetimiProps> = ({ onNotify }) =>
       if (filtered.length > 0 && !selectedIl) {
         handleSelectIl(filtered[0]);
       }
-    } catch {
+    } catch (err) {
+      console.error('İller yüklenirken hata oluştu:', err);
       showToast(t('iller_yuklenirken_hata', 'İller yüklenirken hata oluştu.'), 'error');
     } finally {
       setIllerLoading(false);
